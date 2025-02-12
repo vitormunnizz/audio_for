@@ -47,3 +47,6 @@ O desempenho dos modelos foi avaliado utilizando as seguintes métricas:
 ## Resultados
 
 A experimentação com diferentes técnicas de aumento de dados forneceu insights importantes sobre a robustez e a generalização dos modelos. Os resultados detalhados para cada modelo e conjunto de dados aumentado podem ser encontrados nos respectivos notebooks. O LightGBM apresentou as maiores métricas, sendo o melhor modelo para o problema de detecção dos áudios fakes neste dataset.
+
+## Contato
+Para dúvidas ou sugestões, entre em contato pelo e-mail: vitormunnizz@gmail.com.
