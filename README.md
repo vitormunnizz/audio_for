@@ -1,52 +1,60 @@
-# Detecção de Áudios Falsos (DeepFake) com Foco em Aumento de Dados
+# Detecção de Áudios Falsos (DeepFake) com Estratégias de Ampliação e Balanceamento de Dados
 
-## Descrição do Projeto
+## 📌 Descrição do Projeto
 
-Este projeto tem como objetivo principal desenvolver e avaliar um modelo de aprendizado de máquina robusto para a detecção de áudios sintéticos (DeepFake), com ênfase na utilização de técnicas de aumento de dados para melhorar a generalização e o desempenho do modelo. O crescente avanço das tecnologias de síntese de voz torna cada vez mais difícil diferenciar áudios autênticos de falsificações. Este projeto se concentra em explorar diversas técnicas de aumento de dados como meio de aprimorar a capacidade dos modelos de aprendizado de máquina em identificar áudios DeepFake, garantindo que o modelo seja capaz de generalizar bem para diferentes condições e variações nos dados.
+Este projeto investiga estratégias de ampliação e balanceamento de dados para melhorar a detecção de áudios verdadeiros e falsos (DeepFake).
+O avanço das tecnologias de síntese de voz tem tornado cada vez mais difícil diferenciar áudios autênticos de falsificações. Assim, o trabalho explora como diferentes técnicas de **Data Augmentation** e **balanceamento de classes** influenciam o desempenho de modelos de aprendizado de máquina.
 
-## Dados
+O objetivo principal é avaliar quais combinações de técnicas ajudam os modelos a **generalizar melhor** para diferentes condições, mantendo a qualidade perceptiva e evitando distorções excessivas.
 
-### Origem dos Dados
-Os dados foram coletados e organizados em dois diretórios principais:
+## 📂 Dados
 
-*   `real`: Contém amostras de áudios autênticos.
-*   `fake`: Contém amostras de áudios gerados sinteticamente.
+### Origem
 
-### Formato dos Dados
-*   Arquivos de áudio no formato `.wav` e `.mp3`.
-*   Amostras originais balanceadas para garantir representatividade das classes.
+Os dados foram organizados em dois diretórios principais:
 
-## Técnicas de Aumento de Dados
+* `real`: amostras de áudios autênticos
+* `fake`: amostras geradas sinteticamente (DeepFake)
 
-Um componente central deste projeto é a aplicação de diversas técnicas de aumento de dados para expandir o conjunto de treinamento e aumentar a robustez dos modelos. As seguintes técnicas foram utilizadas:
+### Formato
 
-*   **Ruído:** Adição de ruído aleatório para simular diferentes condições de gravação e aumentar a resistência do modelo a ruídos.
-*   **Inversão Temporal:** Inversão da ordem temporal do áudio, criando novas amostras com características temporais invertidas.
-*   **Equalização Aleatória:** Aplicação de equalização com ganhos aleatórios para variar o espectro do áudio.
+* Arquivos `.wav` e `.mp3`
+* Conjunto original balanceado entre as classes
 
-## Modelos Utilizados
+## 🎛 Técnicas de Ampliação e Balanceamento
 
-Os seguintes modelos de aprendizado de máquina foram implementados e avaliados:
+O projeto aplica **no máximo uma técnica de aumento por amostra**, limitando a expansão a **até o dobro do conjunto original**.
 
-*   Random Forest
-*   K-Nearest Neighbors (KNN)
-*   XGBoost
-*   LightGBM
-*   Redes Neurais (DNN)
-*   Decision Tree
+**Ampliação de Dados (Data Augmentation)**
 
-### Processo de Avaliação
+* **Adição de Ruído**: adição de ruído para simular diferentes condições de gravação.
+* **Variação de Velocidade**: acelera ou desacelera a taxa de reprodução, modificando as características temporais.
+* **Variação de Tom**: simula variações vocais naturais sem comprometer a inteligibilidade.
+* **Equalização Aleatória**: aplica modificações no espectro de frequências para representar diferentes equipamentos ou ambientes.
+* **Mascaramento**: oculta regiões temporais ou frequenciais para simular perda parcial de informação.
 
-O desempenho dos modelos foi avaliado utilizando as seguintes métricas:
+**Balanceamento de Classes**
 
-*   Acurácia: A proporção de predições corretas.
-*   Precisão: A proporção de instâncias positivas previstas corretamente.
-*   Recall: A proporção de instâncias positivas reais que foram previstas corretamente.
-*   F1-Score: A média harmônica entre precisão e recall, fornecendo um balanço entre os dois.
+* **Random UnderSampling**: redução da classe majoritária.
+* **SMOTE**: geração sintética de amostras minoritárias.
 
-## Resultados
+## 🤖 Modelos Avaliados
 
-A experimentação com diferentes técnicas de aumento de dados forneceu insights importantes sobre a robustez e a generalização dos modelos. Os resultados detalhados para cada modelo e conjunto de dados aumentado podem ser encontrados nos respectivos notebooks. O LightGBM apresentou as maiores métricas, sendo o melhor modelo para o problema de detecção dos áudios fakes neste dataset.
+* **Random Forest (RF)**
+* **LightGBM (LGBM)**
+* **Naive Bayes**
+* **Long Short-Term Memory (LSTM)**
+* **K-Nearest Neighbors (KNN)**
 
-## Contato
-Para dúvidas ou sugestões, entre em contato pelo e-mail: vitormunnizz@gmail.com.
+Todos os modelos foram treinados com **validação cruzada** (80% treino, 20% teste), usando **parâmetros padrão** para isolar o efeito das técnicas de ampliação e balanceamento.
+
+## 📏 Métricas de Avaliação
+
+* **Acurácia**
+* **Precisão**
+* **Recall**
+* **F1-Score**
+* **Desvio Padrão** (para avaliar estabilidade entre execuções)
+## 📬 Contato
+
+Para dúvidas ou sugestões: **[vitormunnizz@gmail.com](mailto:vitormunnizz@gmail.com)**
